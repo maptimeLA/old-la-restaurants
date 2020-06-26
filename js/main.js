@@ -36,9 +36,14 @@ $(document).ready(function(){
   var map;
   map = L.map('map').setView([34,-118],10);
   // Add map baselayer - uses chan's mapbox access token
-  L.tileLayer('https://{s}.tiles.mapbox.com/v4/maptimelaomar.f91a81fd/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY3N0ZXJsaW5nIiwiYSI6IndFLXM2dkkifQ.CHZ2w6yCJWHbfllYo3AIcw', {
-    attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-  }).addTo(map);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+    tileSize: 512,
+    maxZoom: 18,
+    zoomOffset: -1,
+    id: 'mapbox/streets-v11',
+    accessToken: 'pk.eyJ1IjoiY3J1emluNzN2dyIsImEiOiI3RDdhUi1NIn0.jaEqREZw7QQMRafKPNBdmA'
+    }).addTo(map);  
 
   // Add each restaurant's popup
   var onEachFeature = function(feature, layer){
